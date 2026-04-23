@@ -1,0 +1,29 @@
+# Java / Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ / VS Code
+.idea/
+*.iml
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Docker / temporary
+docker-compose.override.yml
+*.tmp
+
+# //frontend
+node_modules/
+dist/
+build/

@@ -17,11 +17,11 @@ This is not a to-do app demo. It's a small product with authentication, relation
 
 ## Who Builds What
 
-| Role | Backend (Go) | Frontend (React) | Docker + README |
-|---|---|---|---|
-| Full Stack Engineer | ✅ Required | ✅ Required | ✅ Required |
-| Backend Engineer | ✅ Required | ❌ Not required — include a Postman/Bruno collection or test suite instead | ✅ Required |
-| Frontend Engineer | ❌ Not required — build against the mock API spec in [Appendix A](#appendix-a-mock-api-spec-for-frontend-only-candidates) | ✅ Required | ✅ Required |
+| Role                | Backend (Go)                                                                                                              | Frontend (React)                                                           | Docker + README |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | --------------- |
+| Full Stack Engineer | ✅ Required                                                                                                               | ✅ Required                                                                | ✅ Required     |
+| Backend Engineer    | ✅ Required                                                                                                               | ❌ Not required — include a Postman/Bruno collection or test suite instead | ✅ Required     |
+| Frontend Engineer   | ❌ Not required — build against the mock API spec in [Appendix A](#appendix-a-mock-api-spec-for-frontend-only-candidates) | ✅ Required                                                                | ✅ Required     |
 
 ---
 
@@ -64,14 +64,14 @@ Use **PostgreSQL**. Schema must be managed via migrations — not auto-migrate o
 ## Backend Requirements
 
 > Required for: Full Stack and Backend roles
-> Language: **Go (preferred)**. If you're not comfortable with Go, use a language you know well — note your choice in the README.
+> Language: **JAVA (preferred)**.
 
 ### Authentication
 
-| Method | Endpoint | Description |
-|---|---|---|
-| POST | `/auth/register` | Register with name, email, password |
-| POST | `/auth/login` | Returns a JWT access token |
+| Method | Endpoint         | Description                         |
+| ------ | ---------------- | ----------------------------------- |
+| POST   | `/auth/register` | Register with name, email, password |
+| POST   | `/auth/login`    | Returns a JWT access token          |
 
 - Passwords must be hashed with **bcrypt** (cost ≥ 12)
 - JWT expiry: **24 hours**. Include `user_id` and `email` in claims.
@@ -79,22 +79,22 @@ Use **PostgreSQL**. Schema must be managed via migrations — not auto-migrate o
 
 ### Projects API
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/projects` | List projects the current user owns or has tasks in |
-| POST | `/projects` | Create a project (owner = current user) |
-| GET | `/projects/:id` | Get project details + its tasks |
-| PATCH | `/projects/:id` | Update name/description (owner only) |
-| DELETE | `/projects/:id` | Delete project and all its tasks (owner only) |
+| Method | Endpoint        | Description                                         |
+| ------ | --------------- | --------------------------------------------------- |
+| GET    | `/projects`     | List projects the current user owns or has tasks in |
+| POST   | `/projects`     | Create a project (owner = current user)             |
+| GET    | `/projects/:id` | Get project details + its tasks                     |
+| PATCH  | `/projects/:id` | Update name/description (owner only)                |
+| DELETE | `/projects/:id` | Delete project and all its tasks (owner only)       |
 
 ### Tasks API
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/projects/:id/tasks` | List tasks — support `?status=` and `?assignee=` filters |
-| POST | `/projects/:id/tasks` | Create a task |
-| PATCH | `/tasks/:id` | Update title, description, status, priority, assignee, due_date |
-| DELETE | `/tasks/:id` | Delete task (project owner or task creator only) |
+| Method | Endpoint              | Description                                                     |
+| ------ | --------------------- | --------------------------------------------------------------- |
+| GET    | `/projects/:id/tasks` | List tasks — support `?status=` and `?assignee=` filters        |
+| POST   | `/projects/:id/tasks` | Create a task                                                   |
+| PATCH  | `/tasks/:id`          | Update title, description, status, priority, assignee, due_date |
+| DELETE | `/tasks/:id`          | Delete task (project owner or task creator only)                |
 
 ### General API Requirements
 
@@ -123,13 +123,13 @@ Use **PostgreSQL**. Schema must be managed via migrations — not auto-migrate o
 
 ### Pages & Views
 
-| View | Requirements |
-|---|---|
-| Login / Register | Form with client-side validation, error handling, JWT storage |
-| Projects list | Show all accessible projects, button to create new project |
-| Project detail | Tasks listed or grouped, filter by status and assignee |
+| View             | Requirements                                                      |
+| ---------------- | ----------------------------------------------------------------- |
+| Login / Register | Form with client-side validation, error handling, JWT storage     |
+| Projects list    | Show all accessible projects, button to create new project        |
+| Project detail   | Tasks listed or grouped, filter by status and assignee            |
 | Task create/edit | Modal or side panel — title, status, priority, assignee, due date |
-| Navbar | Show logged-in user's name, logout button |
+| Navbar           | Show logged-in user's name, logout button                         |
 
 ### UX & State
 
@@ -183,12 +183,15 @@ Use **PostgreSQL**. Schema must be managed via migrations — not auto-migrate o
 Your README is evaluated as part of the rubric. It must include all of the following sections:
 
 ### 1. Overview
+
 What this is, what it does, and what tech stack you used.
 
 ### 2. Architecture Decisions
+
 Why did you structure things the way you did? What tradeoffs did you make? What did you intentionally leave out and why?
 
 ### 3. Running Locally
+
 Exact commands from `git clone` to the app running in a browser. Assume the reviewer has Docker and nothing else installed.
 
 ```bash
@@ -201,19 +204,24 @@ docker compose up
 ```
 
 ### 4. Running Migrations
+
 If migrations don't run automatically on startup, provide the exact commands.
 
 ### 5. Test Credentials
+
 Seed user credentials so we can log in immediately without registering:
+
 ```
 Email:    test@example.com
 Password: password123
 ```
 
 ### 6. API Reference
+
 List all endpoints with request/response examples, or link to a Postman/Bruno collection in the repo.
 
 ### 7. What You'd Do With More Time
+
 Honest reflection. What shortcuts did you take? What would you improve or add? This section matters — it tells us how you think about quality and tradeoffs.
 
 ---
@@ -222,17 +230,17 @@ Honest reflection. What shortcuts did you take? What would you improve or add? T
 
 Minimum passing scores: **28 / 45** for Full Stack · **16 / 25** for Frontend-only or Backend-only
 
-| Area | What we look for | Points | Roles |
-|---|---|---|---|
-| **Correctness** | Does it run? Does auth work end-to-end? Can we complete the core flows? | 5 | All |
-| **Code quality** | Naming, structure, separation of concerns, reviewable code, no god functions | 5 | All |
-| **API design** | RESTful conventions, correct HTTP status codes, clean error responses, auth handled properly | 5 | FS, BE |
-| **Data modeling** | Schema makes sense, migrations are clean, indexes where appropriate | 5 | FS, BE |
-| **UI/UX** | Usable, consistent, handles loading/error/empty states, responsive | 5 | FS, FE |
-| **Component design** | Sensible breakdown, state managed at the right level, no prop-drilling nightmares | 5 | FS, FE |
-| **Docker & DevEx** | Does `docker compose up` just work? Multi-stage Dockerfile? `.env.example` present? | 5 | All |
-| **README quality** | Clear setup, architecture reasoning, honest "what's missing" section | 5 | All |
-| **Bonus** | Tests, pagination, drag-and-drop, real-time, dark mode, stats endpoint | +5 | All |
+| Area                 | What we look for                                                                             | Points | Roles  |
+| -------------------- | -------------------------------------------------------------------------------------------- | ------ | ------ |
+| **Correctness**      | Does it run? Does auth work end-to-end? Can we complete the core flows?                      | 5      | All    |
+| **Code quality**     | Naming, structure, separation of concerns, reviewable code, no god functions                 | 5      | All    |
+| **API design**       | RESTful conventions, correct HTTP status codes, clean error responses, auth handled properly | 5      | FS, BE |
+| **Data modeling**    | Schema makes sense, migrations are clean, indexes where appropriate                          | 5      | FS, BE |
+| **UI/UX**            | Usable, consistent, handles loading/error/empty states, responsive                           | 5      | FS, FE |
+| **Component design** | Sensible breakdown, state managed at the right level, no prop-drilling nightmares            | 5      | FS, FE |
+| **Docker & DevEx**   | Does `docker compose up` just work? Multi-stage Dockerfile? `.env.example` present?          | 5      | All    |
+| **README quality**   | Clear setup, architecture reasoning, honest "what's missing" section                         | 5      | All    |
+| **Bonus**            | Tests, pagination, drag-and-drop, real-time, dark mode, stats endpoint                       | +5     | All    |
 
 ### Automatic Disqualifiers
 
@@ -262,6 +270,7 @@ The following will result in immediate rejection, regardless of other quality:
 If you are applying for a **Frontend-only** role, build your UI against this mock API. You may use `json-server`, `msw` (Mock Service Worker), or any other mocking approach — just document it in your README.
 
 ### Base URL
+
 ```
 http://localhost:4000
 ```
@@ -269,6 +278,7 @@ http://localhost:4000
 ### Auth endpoints
 
 **POST `/auth/register`**
+
 ```json
 // Request
 { "name": "Jane Doe", "email": "jane@example.com", "password": "secret123" }
@@ -278,6 +288,7 @@ http://localhost:4000
 ```
 
 **POST `/auth/login`**
+
 ```json
 // Request
 { "email": "jane@example.com", "password": "secret123" }
@@ -289,16 +300,24 @@ http://localhost:4000
 ### Projects endpoints
 
 **GET `/projects`** — requires `Authorization: Bearer <token>`
+
 ```json
 // Response 200
 {
   "projects": [
-    { "id": "uuid", "name": "Website Redesign", "description": "Q2 project", "owner_id": "uuid", "created_at": "2026-04-01T10:00:00Z" }
+    {
+      "id": "uuid",
+      "name": "Website Redesign",
+      "description": "Q2 project",
+      "owner_id": "uuid",
+      "created_at": "2026-04-01T10:00:00Z"
+    }
   ]
 }
 ```
 
 **POST `/projects`**
+
 ```json
 // Request
 { "name": "New Project", "description": "Optional description" }
@@ -308,17 +327,31 @@ http://localhost:4000
 ```
 
 **GET `/projects/:id`**
+
 ```json
 // Response 200
 {
-  "id": "uuid", "name": "Website Redesign", "description": "Q2 project", "owner_id": "uuid",
+  "id": "uuid",
+  "name": "Website Redesign",
+  "description": "Q2 project",
+  "owner_id": "uuid",
   "tasks": [
-    { "id": "uuid", "title": "Design homepage", "status": "in_progress", "priority": "high", "assignee_id": "uuid", "due_date": "2026-04-15", "created_at": "...", "updated_at": "..." }
+    {
+      "id": "uuid",
+      "title": "Design homepage",
+      "status": "in_progress",
+      "priority": "high",
+      "assignee_id": "uuid",
+      "due_date": "2026-04-15",
+      "created_at": "...",
+      "updated_at": "..."
+    }
   ]
 }
 ```
 
 **PATCH `/projects/:id`**
+
 ```json
 // Request
 { "name": "Updated Name", "description": "Updated description" }
@@ -330,22 +363,41 @@ http://localhost:4000
 ### Tasks endpoints
 
 **GET `/projects/:id/tasks?status=todo&assignee=uuid`**
+
 ```json
 // Response 200
-{ "tasks": [ /* task objects */ ] }
+{
+  "tasks": [
+    /* task objects */
+  ]
+}
 ```
 
 **POST `/projects/:id/tasks`**
+
 ```json
 // Request
-{ "title": "Design homepage", "description": "...", "priority": "high", "assignee_id": "uuid", "due_date": "2026-04-15" }
+{
+  "title": "Design homepage",
+  "description": "...",
+  "priority": "high",
+  "assignee_id": "uuid",
+  "due_date": "2026-04-15"
+}
 // Response 201 — returns created task object
 ```
 
 **PATCH `/tasks/:id`**
+
 ```json
 // Request — all fields optional
-{ "title": "Updated title", "status": "done", "priority": "low", "assignee_id": "uuid", "due_date": "2026-04-20" }
+{
+  "title": "Updated title",
+  "status": "done",
+  "priority": "low",
+  "assignee_id": "uuid",
+  "due_date": "2026-04-20"
+}
 // Response 200 — returns updated task object
 ```
 
@@ -369,4 +421,4 @@ http://localhost:4000
 
 ---
 
-*Questions? Reply to the email this was sent from. Good luck — we look forward to seeing what you build.*
+_Questions? Reply to the email this was sent from. Good luck — we look forward to seeing what you build._
