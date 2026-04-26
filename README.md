@@ -168,7 +168,7 @@ Use **PostgreSQL**. Schema must be managed via migrations — not auto-migrate o
 
 ### Migrations
 
-- Use a migration tool: `golang-migrate`, `goose`, `dbmate`, or equivalent
+- Use a migration tool:
 - Migrations must run **automatically on container start**, OR instructions must be explicit and exact in the README
 - Both **up and down** migrations are required for every migration file
 - Include a **seed script or SQL file** that creates at least:
