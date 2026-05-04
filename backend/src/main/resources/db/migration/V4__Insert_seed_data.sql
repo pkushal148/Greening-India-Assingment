@@ -6,6 +6,7 @@ INSERT INTO projects (id, name, description, owner_id) VALUES
     ('550e8400-e29b-41d4-a716-446655440002', 'Website Redesign', 'Q2 project', 
      '550e8400-e29b-41d4-a716-446655440001');
 
+
 INSERT INTO tasks (id, title, description, status, priority, project_id, assignee_id, due_date) VALUES
     ('550e8400-e29b-41d4-a716-446655440003', 'Design homepage', 'Create homepage mockup', 
      'todo', 'high', '550e8400-e29b-41d4-a716-446655440002', 
